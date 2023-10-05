@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-passradiology-dev-102336-authRole",
+      "UnauthRoleArn": "arn:aws:iam::821523485199:role/amplify-passradiology-dev-102336-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::821523485199:role/amplify-passradiology-dev-102336-authRole",
+      "Region": "ap-southeast-1",
+      "DeploymentBucketName": "amplify-passradiology-dev-102336-deployment",
+      "UnauthRoleName": "amplify-passradiology-dev-102336-unauthRole",
+      "StackName": "amplify-passradiology-dev-102336",
+      "StackId": "arn:aws:cloudformation:ap-southeast-1:821523485199:stack/amplify-passradiology-dev-102336/315bc930-6326-11ee-be79-02ebe51b26a8",
+      "AmplifyAppId": "d3pq4p10nuhlu"
+    },
+    "categories": {
+      "auth": {
+        "passradiologye998c6e3": {}
+      },
+      "api": {
+        "passradiology": {}
+      }
+    }
+  }
+}

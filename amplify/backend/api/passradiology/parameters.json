@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "passradiology",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authpassradiologye998c6e3",
+      "Outputs.UserPoolId"
+    ]
+  }
+}
