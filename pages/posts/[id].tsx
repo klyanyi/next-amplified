@@ -1,26 +1,32 @@
-import { API, Amplify, withSSRContext } from 'aws-amplify';
+import { API, Amplify, withSSRContext } from "aws-amplify";
 
-import Head from 'next/head';
-import awsExports from '../../src/aws-exports';
-import { deletePost } from '@graphql/mutations';
-import { getPost } from '@graphql/queries';
+import Head from "next/head";
+import awsExports from "../../src/aws-exports";
+import { deletePost } from "@graphql/mutations";
+import { getPost } from "@graphql/queries";
 // import styles from '../../styles/Home.module.css';
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 
 Amplify.configure({ ...awsExports, ssr: true });
 
-export async function getServerSideProps({ req, params }) {
+export async function getServerSideProps({
+  req,
+  params,
+}: {
+  req: any;
+  params: any;
+}) {
   const SSR = withSSRContext({ req });
   const { data } = await SSR.API.graphql({
     query: getPost,
     variables: {
-      id: params.id
-    }
+      id: params.id,
+    },
   });
-  return { 
+  return {
     props: {
-      post: data.getPost
-    }
+      post: data.getPost,
+    },
   };
 }
 
@@ -38,14 +44,14 @@ export default function Post({ post }) {
   async function handleDelete() {
     try {
       await API.graphql({
-        authMode: 'AMAZON_COGNITO_USER_POOLS',
+        authMode: "AMAZON_COGNITO_USER_POOLS",
         query: deletePost,
         variables: {
-          input: { id: post.id }
-        }
+          input: { id: post.id },
+        },
       });
 
-      window.location.href = '/';
+      window.location.href = "/";
     } catch ({ errors }) {
       console.error(...errors);
       throw new Error(errors[0].message);

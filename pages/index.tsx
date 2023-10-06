@@ -1,21 +1,24 @@
-import { API, Amplify, Auth, withSSRContext } from 'aws-amplify';
+import { API, Amplify, Auth, withSSRContext } from "aws-amplify";
 
 // pages/index.js
-import { Authenticator } from '@aws-amplify/ui-react';
-import Head from 'next/head';
-import awsExports from '../src/aws-exports';
-import { createPost } from '@graphql/mutations';
-import { listPosts } from '@graphql/queries';
+import { Authenticator } from "@aws-amplify/ui-react";
+import Head from "next/head";
+import awsExports from "../src/aws-exports";
+import { createPost } from "@graphql/mutations";
+import { listPosts } from "@graphql/queries";
 
 // import styles from '../styles/Home.module.css';
 
 Amplify.configure({ ...awsExports, ssr: true });
 
-export async function getServerSideProps({ req }) {
+export async function getServerSideProps({ req }: { req: any }) {
   const SSR = withSSRContext({ req });
-  
+
   try {
-    const response = await SSR.API.graphql({ query: listPosts, authMode: 'API_KEY' });
+    const response = await SSR.API.graphql({
+      query: listPosts,
+      authMode: "API_KEY",
+    });
     return {
       props: {
         posts: response.data.listPosts.items,
@@ -29,21 +32,21 @@ export async function getServerSideProps({ req }) {
   }
 }
 
-async function handleCreatePost(event) {
+async function handleCreatePost(event: any) {
   event.preventDefault();
 
   const form = new FormData(event.target);
 
   try {
     const { data } = await API.graphql({
-      authMode: 'AMAZON_COGNITO_USER_POOLS',
+      authMode: "AMAZON_COGNITO_USER_POOLS",
       query: createPost,
       variables: {
         input: {
-          title: form.get('title'),
-          content: form.get('content')
-        }
-      }
+          title: form.get("title"),
+          content: form.get("content"),
+        },
+      },
     });
 
     window.location.href = `/posts/${data.createPost.id}`;
@@ -71,7 +74,11 @@ export default function Home({ posts = [] }) {
 
         <div className={"styles.gri"}>
           {posts.map((post) => (
-            <a className={"styles.card"} href={`/posts/${post.id}`} key={post.id}>
+            <a
+              className={"styles.card"}
+              href={`/posts/${post.id}`}
+              key={post.id}
+            >
               <h3>{post.title}</h3>
               <p>{post.content}</p>
             </a>
