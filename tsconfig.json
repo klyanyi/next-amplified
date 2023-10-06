@@ -15,7 +15,6 @@
     "incremental": true,
     "paths": {
       "@/*": ["./*"],
-      "@aws-exports": ["./src/aws-exports.js"],
       "@graphql/*": ["./src/graphql/*"]
     }
   },
