@@ -29,8 +29,8 @@ export default function Post({ post }) {
 
   if (router.isFallback) {
     return (
-      <div className={styles.container}>
-        <h1 className={styles.title}>Loading&hellip;</h1>
+      <div className={"styles.container"}>
+        <h1 className={"styles.title"}>Loading&hellip;</h1>
       </div>
     );
   }
