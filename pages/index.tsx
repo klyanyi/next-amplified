@@ -3,9 +3,9 @@ import { API, Amplify, Auth, withSSRContext } from 'aws-amplify';
 // pages/index.js
 import { Authenticator } from '@aws-amplify/ui-react';
 import Head from 'next/head';
-import awsExports from '@/aws-exports';
-import { createPost } from '@/graphql/mutations';
-import { listPosts } from '@/graphql/queries';
+import awsExports from '@aws-exports';
+import { createPost } from '@graphql/mutations';
+import { listPosts } from '@graphql/queries';
 
 // import styles from '../styles/Home.module.css';
 

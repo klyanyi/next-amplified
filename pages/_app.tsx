@@ -1,4 +1,4 @@
-import '@/styles/globals.css'
+import '@styles/globals.css'
 import '@aws-amplify/ui-react/styles.css';
 
 import type { AppProps } from 'next/app'
